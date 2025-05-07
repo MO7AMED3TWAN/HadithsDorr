@@ -44,6 +44,11 @@ class HadithProcessor:
         total_tokens_after = 0
         processed_count = 0
 
+        # Handle both single object and array formats
+        if isinstance(data, dict):
+            # Convert single object to list for consistent processing
+            data = [data]
+            
         # Process each hadith
         for entry in data:
             if not entry.get("sharh") or entry["sharh"] == ".":
